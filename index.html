@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <h1>Add to list</h1>
+            To do:<input type="text" id="toDoItems" placeholder="add new items here">
+            <input type="submit" value="Add Item" id="btn" onclick="doList()">
+            <div>
+                <h3>To Do List</h3>
+                <div id="displayItems"></div>
+            </div>
+        </div>
+
+        <script>
+            let items = []
+            function doList (){
+                let toDoItem = document.querySelector("#toDoItems");
+
+                items.push({"value" : toDoItem.value});
+
+                console.groupCollapsed("log items");
+
+                    console.log(toDoItem.value);
+
+                console.groupEnd();
+
+                let displayItems = document.querySelector("#displayItems");
+
+                displayItems.innerHTML = '';
+
+                for(var i = 0;i< items.length; i++){
+                    displayItems.innerHTML += `<div>${items[i].value}</div>` 
+                }
+
+                console.table(items);
+
+                return false;
+            }
+        </script>
+    </body>
+</html>
